@@ -36,7 +36,9 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
+                        <a href="/dashboard" class="ml-3" style="list-style:none">Dashboard</a>
                     </div>
+                    
                 </li>
         
 
@@ -55,13 +57,17 @@
 
                 </div>
                 <div class="col-3">
-                    <select class="form-control" id="exampleFormControlSelect1" onchange="category_selected(this)" name="category">
-                        <option selected disabled></option>
-                        <option value="All">All</option>
+                <select class="form-control" >
+                        @foreach($blogs as $blog)
+                        <!-- <option value="All">All</option> -->
+                        <option value="{{ $blog->category }}">{{ $blog->category }}</option>
+                        <!-- <option value="All">Tech</option>
+                        <option value="All">Life Style</option>
+                        <option value="All">Fashion</option>
+                        <option value="All">Sports</option> -->
+                        @endforeach
                         
-                        <option value=""></option>
-                        
-                    </select>
+                </select>
                 </div>
             </div>
 
@@ -87,8 +93,9 @@
             </div>
         </div>
     </div>
-
- @endforeach       
+    
+ @endforeach  
+ {{$blogs->links()}}
         
 </div>
 

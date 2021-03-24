@@ -47,7 +47,7 @@
 
 <div class="container my-5" >
     <div class="card" style="border-radius: 0">
-        <img class="img-fluid w-100" height="400" src="/storage/blog_images/{{$blog->blog_image}}"" alt="blog-image">
+        <img class="img-fluid w-100" height="200" src="/storage/blog_images/{{$blog->blog_image}}"" alt="blog-image">
 
         <div class="card-body">
             <h4>{{$blog->title}}</h4>

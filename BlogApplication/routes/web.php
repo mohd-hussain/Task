@@ -24,7 +24,7 @@ Route::get('/blog/{id}',[App\Http\Controllers\BlogController::class, 'show']);
 
 Route::group(['middleware' => ['auth','admin']], function() {
     
-    Route::get('/dashboard', [App\Http\Controllers\AdminController::class,'index']);
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class,'index'])->name('dashboard');
 
     Route::get('/blog-create',[App\Http\Controllers\AdminController::class,'createBlog']);
     Route::post('/blog-store',[App\Http\Controllers\AdminController::class,'storeBlog']);

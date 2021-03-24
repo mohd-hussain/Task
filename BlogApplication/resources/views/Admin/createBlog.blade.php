@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Create Post</h1>
+    <h1>Create Blog</h1>
     
 
     <form action="blog-store" method="POST" enctype="multipart/form-data">

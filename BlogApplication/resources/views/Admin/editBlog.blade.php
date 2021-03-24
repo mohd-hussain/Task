@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Create Post</h1>
+    <h1>Edit Blog</h1>
     
 
     <form action="/update-blog/{{ $blog->id }}" method="POST" enctype="multipart/form-data">
