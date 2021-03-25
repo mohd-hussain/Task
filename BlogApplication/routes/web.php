@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\BlogController::class, 'index']);
+Route::get('/', [App\Http\Controllers\BlogController::class, 'index']);
 Route::get('/blog/{id}',[App\Http\Controllers\BlogController::class, 'show']);
 
 Route::group(['middleware' => ['auth','admin']], function() {

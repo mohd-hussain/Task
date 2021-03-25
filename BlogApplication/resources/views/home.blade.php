@@ -20,7 +20,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
 
         <div class="mr-auto"></div>
-        <!-- <a href="/login" class="mr-3">Login</a> -->
+        <!-- <a href="/login" class="mr-3">Login</a>
+        <a href="/register">Register</a> -->
+        @if (Auth::guest())
+                  <li style="list-style:none"><a href="{{ route('login') }}" class="mr-3">Login</a></li>
+                  <li style="list-style:none"><a href="{{ route('register') }}">Register</a></li>
+        @else
         <li class="nav-item dropdown" style="list-style:none">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
@@ -40,7 +45,7 @@
                     </div>
                     
                 </li>
-        
+        @endif
 
     </div>
 </nav>
@@ -57,16 +62,12 @@
 
                 </div>
                 <div class="col-3">
-                <select class="form-control" >
-                        @foreach($blogs as $blog)
-                        <!-- <option value="All">All</option> -->
-                        <option value="{{ $blog->category }}">{{ $blog->category }}</option>
-                        <!-- <option value="All">Tech</option>
-                        <option value="All">Life Style</option>
-                        <option value="All">Fashion</option>
-                        <option value="All">Sports</option> -->
+                <select class="form-control" id="exampleFormControlSelect1" onchange="category_selected(this)" name="category">
+                        <option selected disabled>{{$selected_category}}</option>
+                        <option value="All">All</option>
+                        @foreach($categories as $category)
+                        <option value="{{$category->category}}">{{$category->category}}</option>
                         @endforeach
-                        
                 </select>
                 </div>
             </div>
@@ -102,7 +103,12 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script>
+    function category_selected(category){
+        var href = '/?category=' +category.value;
+        location.href = href;
+    }
+</script>
 
 </body>
 </html>
