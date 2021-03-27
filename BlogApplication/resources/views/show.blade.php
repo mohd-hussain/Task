@@ -22,6 +22,10 @@
         <div class="mr-auto"></div>
         <!-- <a href="/login" class="mr-3">Login</a>
         <a href="/register ">Register</a> -->
+        @if (Auth::guest())
+                  <li style="list-style:none"><a href="{{ route('login') }}" class="mr-3">Login</a></li>
+                  <li style="list-style:none"><a href="{{ route('register') }}">Register</a></li>
+        @else
         <li class="nav-item dropdown" style="list-style:none">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
@@ -39,7 +43,7 @@
                         </form>
                     </div>
                 </li>
-
+        @endif
     </div>
 </nav>
 
